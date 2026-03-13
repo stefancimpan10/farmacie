@@ -1,0 +1,14 @@
+# Folderele cu executabile
+[Bb]in/
+[Oo]bj/
+
+# Setările Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Fișiere de log sau cache
+*.log
+.metadata/
