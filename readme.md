@@ -8,7 +8,8 @@ Operatii care vor fi in aplicatie :
 - [7] Vizualizare Istoric Vânzări
 - [8] Stergere/Dezactivare produs
 - [9] Modificare pret
-- [x] Iesire
+- X Iesire
+  [x]
 
 Se vor stoca informatiile pentru fiecare medicament : 
 - ID Produs
@@ -40,13 +41,14 @@ Se vor stoca informatiile pentru fiecare comanda :
 
 
 Clasele necesare implementării aplicației:
-    -  Clasa Produs: Reprezintă medicamentul. Conține toate detaliile tehnice, prețul și informațiile de siguranță (rețetă, expirare).
 
-    - Clasa ArticolComanda: Este elementul de legătură. Conține un obiect de tip Produs și cantitatea dorită, calculând automat prețul pentru acea linie din comandă.
+-  Clasa Produs: Reprezintă medicamentul. Conține toate detaliile tehnice, prețul și informațiile de siguranță (rețetă, expirare).
 
-    - Clasa Comanda: Reprezintă tranzacția finală. Stochează datele clientului, lista de articole, totalul de plată și detaliile rețetei dacă produsul a fost marcat ca fiind restrictiv.
+- Clasa ArticolComanda: Este elementul de legătură. Conține un obiect de tip Produs și cantitatea dorită, calculând automat prețul pentru acea linie din comandă.
 
-    - Clasa Manager: Este centrul de comandă al aplicației. Gestionează listele globale (stocul și istoricul) și execută toate operațiile de adăugare, ștergere sau căutare.
+- Clasa Comanda: Reprezintă tranzacția finală. Stochează datele clientului, lista de articole, totalul de plată și detaliile rețetei dacă produsul a fost marcat ca fiind restrictiv.
+
+- Clasa Manager: Este centrul de comandă al aplicației. Gestionează listele globale (stocul și istoricul) și execută toate operațiile de adăugare, ștergere sau căutare.
 
     Ar arata ceva :
 
