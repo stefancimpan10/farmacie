@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="NivelUIWPF.PaginaRapoarte"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="20">
+        <TextBlock Text="💰 Rapoarte Financiare" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <WrapPanel>
+            <Border Background="White" Padding="20" CornerRadius="5" Margin="0,0,20,20" Width="250">
+                <StackPanel>
+                    <TextBlock Text="Încasări Ziua Curentă" Foreground="Gray"/>
+                    <TextBlock Text="1,250.00 RON" FontSize="24" FontWeight="Bold" Foreground="Green"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" Padding="20" CornerRadius="5" Margin="0,0,20,20" Width="250">
+                <StackPanel>
+                    <TextBlock Text="TVA Colectat (9%)" Foreground="Gray"/>
+                    <TextBlock Text="112.50 RON" FontSize="24" FontWeight="Bold" Foreground="Blue"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" Padding="20" CornerRadius="5" Width="250">
+                <StackPanel>
+                    <TextBlock Text="Profit Estimat" Foreground="Gray"/>
+                    <TextBlock Text="350.00 RON" FontSize="24" FontWeight="Bold" Foreground="Purple"/>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+
+        <Button Content="📄 Generează Raport PDF" Width="200" HorizontalAlignment="Left" Margin="0,20,0,0" Padding="10"/>
+    </StackPanel>
+</UserControl>

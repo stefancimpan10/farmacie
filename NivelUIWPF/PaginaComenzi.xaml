@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="NivelUIWPF.PaginaComenzi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Titlu -->
+            <RowDefinition Height="Auto"/>
+            <!-- Formular Adăugare -->
+            <RowDefinition Height="Auto"/>
+            <!-- Coșul de Cumpărături -->
+            <RowDefinition Height="*"/>
+            <!-- Istoric Finalizat -->
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Gestiune Comenzi &amp; Vânzări" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- 1. FORMULAR ADĂUGARE ÎN COȘ -->
+        <Border Grid.Row="1" Background="#F9F9F9" Padding="15" CornerRadius="5" Margin="0,0,0,20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <!-- Nume Client -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Produs + Cantitate -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Buton Adaugă -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Coloana 1: Nume Client -->
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <TextBlock Text="Nume Client:" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtNumeClient" Padding="5" VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Coloana 2: Produs și Cantitate -->
+                <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <!-- Produs -->
+                            <ColumnDefinition Width="*"/>
+                            <!-- Cantitate -->
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                            <TextBlock Text="Caută Produs:" FontWeight="SemiBold"/>
+                            <!-- IsEditable=True permite scrierea. IsTextSearchEnabled caută automat în listă -->
+                            <ComboBox x:Name="CmbProduse" 
+                                  Padding="5" 
+                                  IsEditable="True" 
+                                  IsTextSearchEnabled="True" 
+                                  StaysOpenOnEdit="True"
+                                  SelectionChanged="CmbProduse_SelectionChanged"
+                                  ToolTip="Scrie numele medicamentului pentru a căuta..."/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Bucăți:" FontWeight="SemiBold"/>
+                            <TextBox x:Name="TxtCantitate" Text="1" Padding="5" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Coloana 3: Buton Adaugă în Coș -->
+                <StackPanel Grid.Column="2" VerticalAlignment="Bottom">
+                    <Button Content="🛒 Adaugă în Coș" Click="BtnAdaugaInCos_Click" 
+                            Padding="15,8" Background="#3498DB" Foreground="White" FontWeight="Bold"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- 2. COȘUL DE CUMPĂRĂTURI (Temporar) -->
+        <Border Grid.Row="2" BorderBrush="#E74C3C" BorderThickness="1" CornerRadius="5" Margin="0,0,0,20" Background="#FFF5F5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Text="🧺 Coș Curent:"
+               FontFamily="Segoe UI Emoji"
+               FontWeight="Bold"
+               FontSize="16"
+               VerticalAlignment="Center"/>
+
+                    <TextBlock x:Name="LblTotalCos"
+               Text="(Total: 0 articole)"
+               Margin="10,0,0,0"
+               Foreground="Gray"/>
+                </StackPanel>
+
+                <!-- Lista de articole din coș -->
+                <DataGrid x:Name="DgCos" Grid.Row="1" AutoGenerateColumns="False" 
+                          IsReadOnly="True" Height="150" Margin="10,0,10,10"
+                          AlternatingRowBackground="#FFFFFF" Background="White">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Produs" Binding="{Binding NumeProdus}" Width="*"/>
+                        <DataGridTextColumn Header="Bucăți" Binding="{Binding NrBucati}" Width="80"/>
+                        <DataGridTextColumn Header="Preț Unitar" Binding="{Binding PretUnitar, StringFormat=N2}" Width="100"/>
+                        <DataGridTextColumn Header="Total Linii" Binding="{Binding TotalLinie, StringFormat=N2}" Width="100"/>
+                        <DataGridTemplateColumn Header="Acțiuni" Width="80">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="❌" Click="BtnStergeDinCos_Click" Tag="{Binding}" 
+                                            Background="Transparent" BorderThickness="0" Foreground="Red" Cursor="Hand"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Buton Finalizare -->
+                <StackPanel Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Orientation="Horizontal">
+                    <TextBlock Text="Total Comandă: " FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtTotalGeneral" Text="0.00 RON" FontSize="18" FontWeight="Bold" Foreground="Green" Margin="10,0,20,0" VerticalAlignment="Center"/>
+                    <Button Content="✅ Finalizează Comanda" Click="BtnFinalizeazaComanda_Click" 
+                            Padding="20,10" Background="#27AE60" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- 3. ISTORIC COMENZI FINALIZATE -->
+        <Border Grid.Row="3" BorderBrush="#CCCCCC" BorderThickness="1" CornerRadius="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Istoric Comenzi Finalizate" FontWeight="Bold" Margin="10,10,0,5"/>
+
+                <DataGrid x:Name="DgComenzi" Grid.Row="1" AutoGenerateColumns="False" 
+                          IsReadOnly="True" SelectionMode="Single" AlternatingRowBackground="#F0F0F0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                        <DataGridTextColumn Header="Data" Binding="{Binding Data, StringFormat=dd.MM.yyyy HH:mm}" Width="120"/>
+                        <DataGridTextColumn Header="Client" Binding="{Binding NumeClient}" Width="*"/>
+                        <DataGridTextColumn Header="Detalii" Binding="{Binding DetaliiProduse}" Width="2*"/>
+                        <DataGridTextColumn Header="Total RON" Binding="{Binding TotalComanda, StringFormat=N2}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

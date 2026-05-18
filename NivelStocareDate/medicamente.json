@@ -1,0 +1,52 @@
+﻿[
+  {
+    "Nume": "Paracetamol 500mg (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 12.50
+  },
+  {
+    "Nume": "Augmentin 625mg (15 cp)",
+    "NecesitaReteta": true,
+    "Pret": 48.00
+  },
+  {
+    "Nume": "Ibuprofen 400mg (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 22.00
+  },
+  {
+    "Nume": "Aspirină 500mg (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 14.00
+  },
+  {
+    "Nume": "Nurofen Forte 400mg (12 cp)",
+    "NecesitaReteta": false,
+    "Pret": 28.00
+  },
+  {
+    "Nume": "Omeprazol 20mg (14 cp)",
+    "NecesitaReteta": false,
+    "Pret": 16.00
+  },
+  {
+    "Nume": "Xanax 0.25mg (25 cp)",
+    "NecesitaReteta": true,
+    "Pret": 28.00
+  },
+  {
+    "Nume": "Rinofluimucil Spray Nazal",
+    "NecesitaReteta": false,
+    "Pret": 26.00
+  },
+  {
+    "Nume": "Vitamina C 1000mg Efervescent",
+    "NecesitaReteta": false,
+    "Pret": 25.00
+  },
+  {
+    "Nume": "Smecta (10 plicuri)",
+    "NecesitaReteta": false,
+    "Pret": 22.00
+  }
+]

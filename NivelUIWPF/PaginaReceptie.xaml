@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="NivelUIWPF.PaginaReceptie"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="20">
+        <TextBlock Text="📦 Recepție Marfă Nouă" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <Border Background="White" Padding="20" CornerRadius="5" BorderBrush="#CCC" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Selectează Furnizorul:" FontWeight="SemiBold"/>
+                <ComboBox Margin="0,5,0,15" Padding="5">
+                    <ComboBoxItem Content="Farmexim Distributie"/>
+                    <ComboBoxItem Content="RoPharma"/>
+                    <ComboBoxItem Content="Catena Logistics"/>
+                </ComboBox>
+
+                <TextBlock Text="Cod Produs / Barcode:" FontWeight="SemiBold"/>
+                <TextBox Margin="0,5,0,15" Padding="5"/>
+
+                <TextBlock Text="Cantitate Primită:" FontWeight="SemiBold"/>
+                <TextBox Margin="0,5,0,15" Padding="5"/>
+
+                <Button Content="✅ Adaugă în Stoc" Width="150" HorizontalAlignment="Left" Background="#27AE60" Foreground="White" Padding="10"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

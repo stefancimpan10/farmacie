@@ -1,0 +1,74 @@
+﻿<Window x:Class="NivelUIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PharmaSuite Pro" Height="700" Width="1100"
+        WindowStartupLocation="CenterScreen">
+
+    <!-- RESURSELE STILISTICE -->
+    <Window.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Padding" Value="15,12"/>
+            <Setter Property="Margin" Value="0,2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#34495E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- Meniul Lateral Stânga -->
+            <ColumnDefinition Width="230"/>
+            <!-- Zona de Conținut Dreapta -->
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 1. MENIUL LATERAL -->
+        <Border Grid.Column="0" Background="#2C3E50">
+            <StackPanel Margin="0,30,0,0">
+                <!-- Titlul Aplicației -->
+                <TextBlock Text="PharmaSuite Pro" 
+                           Foreground="White" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,40"/>
+
+                <!-- Grupul Principal de Butoane -->
+                <Button Content="🏠 Panou Control" Click="BtnPanou_Click" Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="💊 Vânzări / Comenzi" Click="BtnVanzari_Click" Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="📦 Recepție Marfă" Click="BtnReceptie_Click" Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="📋 Inventar Stoc" Click="BtnInventar_Click" Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="⚠️ Alertă Expirare" Click="BtnExpirare_Click" Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="💰 Rapoarte Financiare" Click="BtnRapoarte_Click" Style="{StaticResource MenuButtonStyle}"/>
+
+                <!-- Separator Vizual -->
+                <Separator Margin="15,20" Background="#485c6b" Height="1"/>
+
+                <!-- Butonul de Configurare -->
+                <Button Content="⚙️ Configurare Sistem" Click="BtnConfig_Click" Style="{StaticResource MenuButtonStyle}"/>
+
+                <!-- Butonul de Ieșire (Roșu la hover sau permanent) -->
+                <Button Content="❌ Ieșire Aplicație" Click="BtnIesire_Click" 
+                        Style="{StaticResource MenuButtonStyle}" 
+                        Background="#C0392B" 
+                        Foreground="White"
+                        Margin="0,2,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- 2. ZONA DE CONȚINUT DINAMIC -->
+        <Border Grid.Column="1" Background="#ECF0F1" CornerRadius="10,0,0,0">
+            <ContentControl x:Name="ZonaContinut" Margin="25"/>
+        </Border>
+    </Grid>
+</Window>

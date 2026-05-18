@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="NivelUIWPF.PaginaPanouControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer>
+        <StackPanel Margin="10">
+            <TextBlock Text="Panou Control - Rezumat Ziua Curentă" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+            <WrapPanel>
+                <!-- Card 1: Total Încasări -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,20,20" Width="250" Height="150">
+                    <StackPanel>
+                        <TextBlock Text="Total Încasări Azi" Foreground="Gray" FontSize="14"/>
+                        <TextBlock x:Name="TxtTotalAzi" Text="0.00 RON" FontSize="28" FontWeight="Bold" Foreground="Green" Margin="0,10,0,0"/>
+                        <TextBlock Text="Lei" HorizontalAlignment="Right" Foreground="Gray"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card 2: Număr Comenzi -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,20,20" Width="250" Height="150">
+                    <StackPanel>
+                        <TextBlock Text="Comenzi Finalizate" Foreground="Gray" FontSize="14"/>
+                        <TextBlock x:Name="TxtNrComenzi" Text="0" FontSize="28" FontWeight="Bold" Foreground="Blue" Margin="0,10,0,0"/>
+                        <TextBlock Text="Bonuri fiscale" HorizontalAlignment="Right" Foreground="Gray"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card 3: Alertă Expirare -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,20,20" Width="250" Height="150">
+                    <StackPanel>
+                        <TextBlock Text="Produse Expirate/Critice" Foreground="Gray" FontSize="14"/>
+                        <TextBlock x:Name="TxtExpirate" Text="0" FontSize="28" FontWeight="Bold" Foreground="Red" Margin="0,10,0,0"/>
+                        <TextBlock Text="Necesită atenție!" HorizontalAlignment="Right" Foreground="Red"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <TextBlock Text="Activitate Recentă" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+            <Border Background="White" CornerRadius="5" Padding="10">
+                <TextBlock Text="Nu există activitate recentă de afișat." Foreground="Gray" FontStyle="Italic"/>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

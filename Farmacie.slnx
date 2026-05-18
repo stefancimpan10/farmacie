@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="EvidentaFarmacie/EvidentaFarmacie.csproj" />
+  <Project Path="LibrarieModele/LibrarieModele.csproj" />
+  <Project Path="NivelStocareDate/NivelStocareDate.csproj" />
+  <Project Path="NivelUIWPF/NivelUIWPF.csproj" />
+</Solution>
