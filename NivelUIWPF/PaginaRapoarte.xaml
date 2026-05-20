@@ -1,32 +1,75 @@
 ﻿<UserControl x:Class="NivelUIWPF.PaginaRapoarte"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel Margin="20">
-        <TextBlock Text="💰 Rapoarte Financiare" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+    <ScrollViewer>
+        <StackPanel Margin="20">
+            <!-- Titlu -->
+            <TextBlock Text="📊 Rapoarte Financiare Detaliate" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
 
-        <WrapPanel>
-            <Border Background="White" Padding="20" CornerRadius="5" Margin="0,0,20,20" Width="250">
-                <StackPanel>
-                    <TextBlock Text="Încasări Ziua Curentă" Foreground="Gray"/>
-                    <TextBlock Text="1,250.00 RON" FontSize="24" FontWeight="Bold" Foreground="Green"/>
+            <!-- Filtre -->
+            <Border Background="#F9F9F9" Padding="15" CornerRadius="5" Margin="0,0,0,20">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Perioada:" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <DatePicker x:Name="DpStart" Width="120" Margin="0,0,10,0"/>
+                    <TextBlock Text="-" FontSize="16" Margin="0,0,10,0"/>
+                    <DatePicker x:Name="DpEnd" Width="120" Margin="0,0,20,0"/>
+
+                    <Button Content=" Generează Raport" Click="BtnGenereaza_Click" 
+                            Padding="15,5" Background="#2980B9" Foreground="White" FontWeight="Bold"/>
+
+                    <Button Content="📥 Export Excel" Click="BtnExport_Click" 
+                            Padding="15,5" Background="#27AE60" Foreground="White" FontWeight="Bold" Margin="10,0,0,0"/>
                 </StackPanel>
             </Border>
 
-            <Border Background="White" Padding="20" CornerRadius="5" Margin="0,0,20,20" Width="250">
-                <StackPanel>
-                    <TextBlock Text="TVA Colectat (9%)" Foreground="Gray"/>
-                    <TextBlock Text="112.50 RON" FontSize="24" FontWeight="Bold" Foreground="Blue"/>
-                </StackPanel>
-            </Border>
+            <!-- KPIs (Carduri) -->
+            <Grid Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Border Background="White" Padding="20" CornerRadius="5" Width="250">
-                <StackPanel>
-                    <TextBlock Text="Profit Estimat" Foreground="Gray"/>
-                    <TextBlock Text="350.00 RON" FontSize="24" FontWeight="Bold" Foreground="Purple"/>
-                </StackPanel>
-            </Border>
-        </WrapPanel>
+                <Border Grid.Column="0" Background="White" BorderBrush="#CCC" BorderThickness="1" Padding="10" Margin="5" CornerRadius="5">
+                    <StackPanel>
+                        <TextBlock Text="Total Încasări" Foreground="#555" FontSize="12"/>
+                        <TextBlock x:Name="TxtTotalInc" Text="0.00 RON" FontSize="18" FontWeight="Bold" Foreground="#27AE60"/>
+                    </StackPanel>
+                </Border>
 
-        <Button Content="📄 Generează Raport PDF" Width="200" HorizontalAlignment="Left" Margin="0,20,0,0" Padding="10"/>
-    </StackPanel>
+                <Border Grid.Column="1" Background="White" BorderBrush="#CCC" BorderThickness="1" Padding="10" Margin="5" CornerRadius="5">
+                    <StackPanel>
+                        <TextBlock Text="Nr. Comenzi" Foreground="#555" FontSize="12"/>
+                        <TextBlock x:Name="TxtNrComenzi" Text="0" FontSize="18" FontWeight="Bold" Foreground="#2980B9"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" Background="White" BorderBrush="#CCC" BorderThickness="1" Padding="10" Margin="5" CornerRadius="5">
+                    <StackPanel>
+                        <TextBlock Text="Produse Vândute" Foreground="#555" FontSize="12"/>
+                        <TextBlock x:Name="TxtNrProduse" Text="0 buc" FontSize="18" FontWeight="Bold" Foreground="#E67E22"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="3" Background="White" BorderBrush="#CCC" BorderThickness="1" Padding="10" Margin="5" CornerRadius="5">
+                    <StackPanel>
+                        <TextBlock Text="Valoare Medie/Comandă" Foreground="#555" FontSize="12"/>
+                        <TextBlock x:Name="TxtMedie" Text="0.00 RON" FontSize="18" FontWeight="Bold" Foreground="#8E44AD"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Tabel Detaliat -->
+            <TextBlock Text="Detalii Tranzacții" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+            <DataGrid x:Name="DgRapoarte" AutoGenerateColumns="False" IsReadOnly="True" Height="300" AlternatingRowBackground="#FAFAFA">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Data" Binding="{Binding Data, StringFormat=dd.MM.yyyy HH:mm}" Width="150"/>
+                    <DataGridTextColumn Header="Client" Binding="{Binding NumeClient}" Width="150"/>
+                    <DataGridTextColumn Header="Produse" Binding="{Binding DetaliiProduse}" Width="2*"/>
+                    <DataGridTextColumn Header="Total (RON)" Binding="{Binding TotalComanda, StringFormat=N2}" Width="120" FontWeight="Bold"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

@@ -2,51 +2,584 @@
   {
     "Nume": "Paracetamol 500mg (20 cp)",
     "NecesitaReteta": false,
-    "Pret": 12.50
+    "Pret": 12.50,
+    "Stoc": 0
   },
   {
-    "Nume": "Augmentin 625mg (15 cp)",
-    "NecesitaReteta": true,
-    "Pret": 48.00
+    "Nume": "Paracetamol 1g (10 cp)",
+    "NecesitaReteta": false,
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Ibuprofen 200mg (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 15.00,
+    "Stoc": 0
   },
   {
     "Nume": "Ibuprofen 400mg (20 cp)",
     "NecesitaReteta": false,
-    "Pret": 22.00
+    "Pret": 22.00,
+    "Stoc": 0
   },
   {
     "Nume": "Aspirină 500mg (20 cp)",
     "NecesitaReteta": false,
-    "Pret": 14.00
+    "Pret": 14.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Algocalmin (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 16.50,
+    "Stoc": 0
   },
   {
     "Nume": "Nurofen Forte 400mg (12 cp)",
     "NecesitaReteta": false,
-    "Pret": 28.00
+    "Pret": 28.00,
+    "Stoc": 0
   },
   {
-    "Nume": "Omeprazol 20mg (14 cp)",
+    "Nume": "Nurofen Express 400mg (10 cp)",
     "NecesitaReteta": false,
-    "Pret": 16.00
+    "Pret": 32.00,
+    "Stoc": 0
   },
   {
-    "Nume": "Xanax 0.25mg (25 cp)",
-    "NecesitaReteta": true,
-    "Pret": 28.00
+    "Nume": "Diclofenac 50mg (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 19.00,
+    "Stoc": 0
   },
+  {
+    "Nume": "Ketonal 50mg (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 24.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Augmentin 625mg (15 cp)",
+    "NecesitaReteta": true,
+    "Pret": 48.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Augmentin 1g (14 cp)",
+    "NecesitaReteta": true,
+    "Pret": 65.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Amoxicilină 500mg (20 cp)",
+    "NecesitaReteta": true,
+    "Pret": 25.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Azitromicină 500mg (3 cp)",
+    "NecesitaReteta": true,
+    "Pret": 35.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Ciprofloxacin 500mg (10 cp)",
+    "NecesitaReteta": true,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Eritromicină 250mg (20 cp)",
+    "NecesitaReteta": true,
+    "Pret": 22.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Klacid 500mg (14 cp)",
+    "NecesitaReteta": true,
+    "Pret": 55.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Zinnat 500mg (10 cp)",
+    "NecesitaReteta": true,
+    "Pret": 42.00,
+    "Stoc": 0
+  },
+
   {
     "Nume": "Rinofluimucil Spray Nazal",
     "NecesitaReteta": false,
-    "Pret": 26.00
+    "Pret": 26.00,
+    "Stoc": 0
   },
   {
-    "Nume": "Vitamina C 1000mg Efervescent",
+    "Nume": "Bixtonim Spray Nazal",
     "NecesitaReteta": false,
-    "Pret": 25.00
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Otrivin Adult Spray",
+    "NecesitaReteta": false,
+    "Pret": 24.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Theraflu Hot (10 plicuri)",
+    "NecesitaReteta": false,
+    "Pret": 30.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Coldrex HotRem (10 plicuri)",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Sirop TussMag (100ml)",
+    "NecesitaReteta": false,
+    "Pret": 22.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Sirop Bronchostop (150ml)",
+    "NecesitaReteta": false,
+    "Pret": 35.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Pectolvan Ivy Sirop",
+    "NecesitaReteta": false,
+    "Pret": 29.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Vitamina C 1000mg Efervescent (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 25.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Vitamina D3 2000UI (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 32.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Magnesiu B6 Forte (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Centrum Multivitamine (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 45.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Berocca Performance (15 cp)",
+    "NecesitaReteta": false,
+    "Pret": 38.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Supradyn Effervescent (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 42.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Xanax 0.25mg (25 cp)",
+    "NecesitaReteta": true,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Xanax 0.5mg (25 cp)",
+    "NecesitaReteta": true,
+    "Pret": 35.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Diazepam 10mg (20 cp)",
+    "NecesitaReteta": true,
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Sertralina 50mg (28 cp)",
+    "NecesitaReteta": true,
+    "Pret": 42.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Fluoxetină 20mg (28 cp)",
+    "NecesitaReteta": true,
+    "Pret": 30.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Escitalopram 10mg (28 cp)",
+    "NecesitaReteta": true,
+    "Pret": 38.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Omeprazol 20mg (14 cp)",
+    "NecesitaReteta": false,
+    "Pret": 16.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Nexium Control 20mg (14 cp)",
+    "NecesitaReteta": false,
+    "Pret": 35.00,
+    "Stoc": 0
   },
   {
     "Nume": "Smecta (10 plicuri)",
     "NecesitaReteta": false,
-    "Pret": 22.00
+    "Pret": 22.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Imodium Rapid (6 cp)",
+    "NecesitaReteta": false,
+    "Pret": 24.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Mezym Forte (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Creon 10000 (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 45.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Betadine Unguent 40g",
+    "NecesitaReteta": false,
+    "Pret": 20.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Triderm Cremă 15g",
+    "NecesitaReteta": true,
+    "Pret": 32.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Canesten Cremă 20g",
+    "NecesitaReteta": false,
+    "Pret": 25.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Fungicid Crema 20g",
+    "NecesitaReteta": false,
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Loratină 10mg (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 15.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Claritine 10mg (10 cp)",
+    "NecesitaReteta": false,
+    "Pret": 22.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Aerius 5mg (10 cp)",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Plavix 75mg (28 cp)",
+    "NecesitaReteta": true,
+    "Pret": 85.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Aspenter 100mg (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 12.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Trombo ASS 100mg (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 14.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Antigripin Fort (10 plicuri)",
+    "NecesitaReteta": false,
+    "Pret": 26.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Gripovit C (20 cp eferv.)",
+    "NecesitaReteta": false,
+    "Pret": 24.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Wick DayMed (10 cp)",
+    "NecesitaReteta": false,
+    "Pret": 29.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Wick NightMed (10 cp)",
+    "NecesitaReteta": false,
+    "Pret": 29.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Sinupret Extract (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 38.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Sinupret Sirop (100ml)",
+    "NecesitaReteta": false,
+    "Pret": 32.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Mucosolvan Sirop Adulți",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Ambroxol Sirop (100ml)",
+    "NecesitaReteta": false,
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Prospan Sirop (100ml)",
+    "NecesitaReteta": false,
+    "Pret": 35.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Stodal Sirop Homeopat",
+    "NecesitaReteta": false,
+    "Pret": 30.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Strepsils Original (24 pastile)",
+    "NecesitaReteta": false,
+    "Pret": 22.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Strepsils Intensive (16 pastile)",
+    "NecesitaReteta": false,
+    "Pret": 26.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Septolete Total (30 pastile)",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Faringosept (20 pastile)",
+    "NecesitaReteta": false,
+    "Pret": 16.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Hexoral Spray 0.2%",
+    "NecesitaReteta": false,
+    "Pret": 24.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Tantum Verde Spray",
+    "NecesitaReteta": false,
+    "Pret": 26.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Propolis Spray Natural",
+    "NecesitaReteta": false,
+    "Pret": 20.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Voltaren Emulgel 50g",
+    "NecesitaReteta": false,
+    "Pret": 32.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Gel Diclofenac 50g",
+    "NecesitaReteta": false,
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Finalgon Unguent",
+    "NecesitaReteta": false,
+    "Pret": 22.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Calmagel (200ml)",
+    "NecesitaReteta": false,
+    "Pret": 24.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Nustock Kremă",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Hepatil (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 26.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Essentiale Forte (30 cp)",
+    "NecesitaReteta": false,
+    "Pret": 45.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Carbosorb (20 cp)",
+    "NecesitaReteta": false,
+    "Pret": 12.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Enterosgel (225g)",
+    "NecesitaReteta": false,
+    "Pret": 38.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Linex Forte (14 cp)",
+    "NecesitaReteta": false,
+    "Pret": 32.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Normoflorin L (100ml)",
+    "NecesitaReteta": false,
+    "Pret": 42.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Picaturi pentru ochi Lacrimi Artificiale",
+    "NecesitaReteta": false,
+    "Pret": 25.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Sistem Ocular Picături",
+    "NecesitaReteta": false,
+    "Pret": 28.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Bepanthen Eye Unguent",
+    "NecesitaReteta": false,
+    "Pret": 30.00,
+    "Stoc": 0
+  },
+
+  {
+    "Nume": "Cerumenex Picături Urechi",
+    "NecesitaReteta": false,
+    "Pret": 22.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Otalgan Picături",
+    "NecesitaReteta": false,
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Spray dezinfectant mâini 500ml",
+    "NecesitaReteta": false,
+    "Pret": 15.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Măști chirurgicale (50 buc)",
+    "NecesitaReteta": false,
+    "Pret": 20.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Termometru Digital",
+    "NecesitaReteta": false,
+    "Pret": 35.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Compresă sterilă 10x10cm (10 buc)",
+    "NecesitaReteta": false,
+    "Pret": 8.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Leucoplast Standard (20 buc)",
+    "NecesitaReteta": false,
+    "Pret": 10.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Betadină Soluție 10% (100ml)",
+    "NecesitaReteta": false,
+    "Pret": 18.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Apă Oxigenată 3% (100ml)",
+    "NecesitaReteta": false,
+    "Pret": 6.00,
+    "Stoc": 0
+  },
+  {
+    "Nume": "Alcool Sanitar 70% (500ml)",
+    "NecesitaReteta": false,
+    "Pret": 12.00,
+    "Stoc": 0
   }
 ]

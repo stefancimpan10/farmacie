@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="NivelUIWPF.PaginaAdministrare"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="⚙️ Administrare Produse (Preț &amp; Stoc)" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- Tabel Editabil -->
+        <DataGrid x:Name="DgAdmin" Grid.Row="1" AutoGenerateColumns="False" 
+                  IsReadOnly="False" AlternatingRowBackground="#F0F0F0"
+                  CellEditEnding="DgAdmin_CellEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nume Medicament" Binding="{Binding Nume}" Width="2*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Preț (RON)" Binding="{Binding Pret, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                <DataGridTextColumn Header="Stoc Disponibil" Binding="{Binding Stoc, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                <DataGridCheckBoxColumn Header="Cu Rețetă?" Binding="{Binding NecesitaReteta}" Width="100" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Content="💾 Salvează Modificările" Click="BtnSalveaza_Click" 
+                    Padding="20,10" Background="#27AE60" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Newtonsoft.Json.Linq;
+using System.Windows;
+using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media; // Adaugă asta sus de tot
 
@@ -9,6 +11,7 @@ namespace NivelUIWPF
         public MainWindow()
         {
             InitializeComponent();
+
 
             // La pornire, afișăm Panoul de Control
             SchimbaPagina(new PaginaPanouControl());
@@ -35,54 +38,39 @@ namespace NivelUIWPF
         // 3. Recepție Marfă (Placeholder deocamdată)
         private void BtnReceptie_Click(object sender, RoutedEventArgs e)
         {
-            var lbl = new Label
+            try
             {
-                Content = "📦 Modul Recepție Marfă\n(Aici vei adăuga produse noi în stoc)",
-                FontSize = 20,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-            SchimbaPagina(new UserControl { Content = lbl });
+                // Încercăm să creăm instanța paginii
+                SchimbaPagina(new PaginaReceptie());
+            }
+            catch (Exception ex)
+            {
+                // Dacă apare vreo eroare la încărcarea paginii, o afișăm ca să știm ce se întâmplă
+                MessageBox.Show($"Eroare la deschiderea paginii de Recepție:\n{ex.Message}", "Eroare Criticală");
+            }
         }
 
         // 4. Inventar Stoc (Placeholder)
         private void BtnInventar_Click(object sender, RoutedEventArgs e)
         {
-            var lbl = new Label
-            {
-                Content = "📋 Modul Inventar\n(Lista completă cu medicamente și prețuri)",
-                FontSize = 20,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-            SchimbaPagina(new UserControl { Content = lbl });
+            SchimbaPagina(new PaginaInventar());
         }
 
         // 5. Alertă Expirare (Placeholder - o vom face detaliată data viitoare)
         private void BtnExpirare_Click(object sender, RoutedEventArgs e)
         {
-            var lbl = new Label
-            {
-                Content = "⚠️ Alertă Expirare\n(Lista produselor care expiră în < 30 zile)",
-                FontSize = 20,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Foreground = Brushes.Red
-            };
-            SchimbaPagina(new UserControl { Content = lbl });
+            SchimbaPagina(new PaginaExpirare());
         }
 
         // 6. Rapoarte Financiare (Placeholder)
         private void BtnRapoarte_Click(object sender, RoutedEventArgs e)
         {
-            var lbl = new Label
-            {
-                Content = "💰 Rapoarte Financiare\n(Total încasări, TVA, Profit)",
-                FontSize = 20,
-                HorizontalAlignment = HorizontalAlignment.Center, 
-                VerticalAlignment = VerticalAlignment.Center     
-            };
-            SchimbaPagina(new UserControl { Content = lbl });
+            SchimbaPagina(new PaginaRapoarte());
+        }
+
+        private void BtnAdministrare_Click(object sender, RoutedEventArgs e)
+        {
+            SchimbaPagina(new PaginaAdministrare());
         }
 
         // 7. Configurare

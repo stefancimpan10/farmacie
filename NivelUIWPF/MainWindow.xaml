@@ -50,6 +50,7 @@
                 <Button Content="📋 Inventar Stoc" Click="BtnInventar_Click" Style="{StaticResource MenuButtonStyle}"/>
                 <Button Content="⚠️ Alertă Expirare" Click="BtnExpirare_Click" Style="{StaticResource MenuButtonStyle}"/>
                 <Button Content="💰 Rapoarte Financiare" Click="BtnRapoarte_Click" Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="⚙️ Administrare Stoc" Click="BtnAdministrare_Click" Style="{StaticResource MenuButtonStyle}" />
 
                 <!-- Separator Vizual -->
                 <Separator Margin="15,20" Background="#485c6b" Height="1"/>

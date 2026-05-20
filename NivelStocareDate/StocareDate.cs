@@ -15,23 +15,89 @@ namespace NivelStocareDate
         public string Nume { get; set; } = "";
         public bool NecesitaReteta { get; set; }
         public decimal Pret { get; set; }
+        public int Stoc { get; set; } = 0;
     }
 
     public static class ManagerMedicamente
     {
+        // Numele fișierului JSON care trebuie să existe în folderul de execuție al aplicației
         private static string numeFisier = "medicamente.json";
 
+        /// <summary>
+        /// Încarcă lista de medicamente din fișierul JSON.
+        /// Dacă fișierul nu există sau e corupt, returnează o listă goală.
+        /// </summary>
         public static List<MedicamentDB> IncarcaMedicamente()
         {
-            if (!File.Exists(numeFisier)) return new List<MedicamentDB>();
+            if (!File.Exists(numeFisier))
+            {
+                // Opțional: Poți crea un fișier gol aici dacă vrei
+                return new List<MedicamentDB>();
+            }
 
             try
             {
                 string jsonContinut = File.ReadAllText(numeFisier);
+
+                // Verificăm dacă fișierul nu e gol
+                if (string.IsNullOrWhiteSpace(jsonContinut))
+                    return new List<MedicamentDB>();
+
                 var lista = JsonConvert.DeserializeObject<List<MedicamentDB>>(jsonContinut);
                 return lista ?? new List<MedicamentDB>();
             }
-            catch { return new List<MedicamentDB>(); }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Eroare la citirea bazei de date: {ex.Message}");
+                return new List<MedicamentDB>();
+            }
+        }
+
+        /// <summary>
+        /// Salvează întreaga listă de medicamente în fișierul JSON, suprascriind conținutul vechi.
+        /// </summary>
+        public static void SalveazaMedicamente(List<MedicamentDB> listaMedicamente)
+        {
+            try
+            {
+                // Convertim lista în text JSON frumos formatat (cu indentare)
+                string jsonContinut = JsonConvert.SerializeObject(listaMedicamente, Formatting.Indented);
+
+                // Scriem textul în fișier
+                File.WriteAllText(numeFisier, jsonContinut);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Eroare la salvarea bazei de date: {ex.Message}");
+                throw; // Aruncăm eroarea mai departe ca să știm că a picat
+            }
+        }
+
+        /// <summary>
+        /// Adaugă un singur medicament nou în listă și salvează imediat modificarea în fișier.
+        /// Evită duplicatele după nume.
+        /// </summary>
+        public static void AdaugaSiSalveazaMedicament(MedicamentDB medicamentNou)
+        {
+            // 1. Încărcăm ce există deja
+            var lista = IncarcaMedicamente();
+
+            // 2. Verificăm să nu adăugăm un duplicat (comparăm numele, ignorând majusculele)
+            bool existaDeja = lista.Any(m => m.Nume.ToLower().Trim() == medicamentNou.Nume.ToLower().Trim());
+
+            if (!existaDeja)
+            {
+                // 3. Adăugăm noul medicament
+                lista.Add(medicamentNou);
+
+                // 4. Salvăm lista actualizată înapoi în fișier
+                SalveazaMedicamente(lista);
+            }
+            else
+            {
+                // Opțional: Poți arunca o excepție sau afișa un mesaj dacă vrei
+                Console.WriteLine("Produsul există deja în baza de date.");
+            }
         }
     }
 

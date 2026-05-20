@@ -47,12 +47,13 @@
                             <TextBlock Text="Caută Produs:" FontWeight="SemiBold"/>
                             <!-- IsEditable=True permite scrierea. IsTextSearchEnabled caută automat în listă -->
                             <ComboBox x:Name="CmbProduse" 
-                                  Padding="5" 
-                                  IsEditable="True" 
-                                  IsTextSearchEnabled="True" 
-                                  StaysOpenOnEdit="True"
-                                  SelectionChanged="CmbProduse_SelectionChanged"
-                                  ToolTip="Scrie numele medicamentului pentru a căuta..."/>
+                                    Padding="5" 
+                                    IsEditable="True" 
+                                    IsTextSearchEnabled="False" 
+                                    StaysOpenOnEdit="True"
+                                    KeyUp="CmbProduse_KeyUp"
+                                    SelectionChanged="CmbProduse_SelectionChanged"
+                                    ToolTip="Scrie numele medicamentului pentru a căuta..."/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
