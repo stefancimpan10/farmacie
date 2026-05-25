@@ -61,51 +61,313 @@ Clasele necesare implementării aplicației:
 **Clasa Manager:** AdaugaProdus, StergeProdus, ModificaPret, ActualizeazaStoc, ObtineMeniu, CautaProdus, CautaRapid, VerificaExpirate, AdaugaComanda, ObtineComenzi, CautaComanda, ModificaComanda, StergeComanda.
 
 
-🏥 PharmaSuite Pro - Sistem de Gestiune Farmaceutică
-📌 Descriere Generală
-PharmaSuite Pro este o aplicație desktop modernă dezvoltată în C# .NET (WPF), destinată gestionării complete a unei farmacii. Aplicația permite administrarea stocurilor, procesarea vânzărilor, monitorizarea expirărilor și generarea de rapoarte financiare, utilizând o arhitectură modulară și o bază de date locală portabilă (JSON).
-🚀 Funcționalități Principale
-Aplicația acoperă toate operațiile esențiale ale unui flux farmaceutic:
-📋 Vizualizare Catalog & Inventar: Listă completă a medicamentelor cu detalii tehnice (substanță, formă, concentrație) și valori de stoc.
-🛒 Creare Comandă Nouă (Vânzare): Interfață tip "POS" rapidă, cu coș de cumpărături, calcul automat al totalului și validare stoc în timp real.
-📦 Recepție Marfă: Modul dedicat pentru intrări de stoc, permitând adăugarea multiplă de produse (tip factură) și actualizarea automată a cantităților.
-⚠️ Alerte Expirare: Monitorizare proactivă a produselor apropiate de data expirării, cu filtre dinamice (30 zile, 3 luni, 1 an).
-💰 Rapoarte Financiare: Dashboard detaliat cu încasări zilnice/lunare, număr de comenzi și istoric tranzacții filtrabil pe perioade.
-⚙️ Administrare & Configurare: Editare prețuri, activare/dezactivare produse și gestionarea parametrilor sistemului.
-💱 Conversie Valutară: Instrument utilitar pentru conversia rapidă a sumelor între RON, EUR și USD.
-🏗️ Arhitectură Software & Clase
-Aplicația este construită pe principiul separării responsabilităților, folosind următoarele clase fundamentale:
-1. Clasa MedicamentDB (Produs)
-Reprezintă entitatea de bază a catalogului. Stochează informațiile tehnice și comerciale ale medicamentului.
-Atribute: ID, Nume (Denumire comercială), SubstantaActivă, FormaFarmaceutică, Concentrație, Pret, Stoc, NecesitaReteta, DataExpirare.
-Responsabilități: Definirea structurii datelor pentru un produs individual.
-2. Clasa ArticolComanda (Linie de Vânzare)
-Elementul de legătură dintre un produs și o tranzacție specifică.
-Atribute: Produs (referință către MedicamentDB), Cantitate, PretVanzareMomentan.
-Responsabilități: Calculează subtotalul pentru o linie din coș (Cantitate * Pret) și îngheață prețul la momentul vânzării, indiferent de modificările ulterioare din catalog.
-3. Clasa Comanda (Tranzacție)
+# PharmaSuite Pro - Sistem de Gestiune Farmaceutică
+
+## **📌 Descriere Generală**
+**PharmaSuite Pro** este o aplicație desktop modernă dezvoltată în **C# .NET (WPF)**, destinată gestionării complete a unei farmacii.
+
+Aplicația permite:
+- administrarea stocurilor
+- procesarea vânzărilor
+- monitorizarea expirărilor
+- generarea de rapoarte financiare
+
+folosind o arhitectură modulară și o bază de date locală portabilă bazată pe fișiere JSON.
+
+---
+
+# **🚀 Funcționalități Principale**
+
+Aplicația acoperă toate operațiile esențiale ale unui flux farmaceutic.
+
+## **📋 Vizualizare Catalog & Inventar**
+- Listă completă a medicamentelor
+- Detalii tehnice:
+  - substanță activă
+  - formă farmaceutică
+  - concentrație
+- Vizualizare stoc disponibil
+- Filtrare și căutare rapidă
+
+---
+
+## **🛒 Creare Comandă Nouă (Vânzare)**
+- Interfață tip POS rapidă
+- Coș de cumpărături
+- Calcul automat al totalului
+- Validare stoc în timp real
+- Verificare produse care necesită rețetă
+
+---
+
+## **📦 Recepție Marfă**
+- Modul dedicat pentru intrări de stoc
+- Adăugare multiplă de produse
+- Actualizare automată a cantităților
+- Gestionare tip factură
+
+---
+
+## **⚠️ Alerte Expirare**
+- Monitorizare produse apropiate de expirare
+- Filtre dinamice:
+  - 30 zile
+  - 3 luni
+  - 1 an
+
+---
+
+## **💰 Rapoarte Financiare**
+- Încasări zilnice
+- Încasări lunare
+- Număr total de comenzi
+- Istoric tranzacții filtrabil
+- Dashboard statistic
+
+---
+
+## **⚙️ Administrare & Configurare**
+- Editare prețuri
+- Activare/dezactivare produse
+- Gestionare parametri sistem
+
+---
+
+## **💱 Conversie Valutară**
+- Conversie rapidă:
+  - RON
+  - EUR
+  - USD
+
+---
+
+# **🧩 Operații Disponibile în Aplicație**
+
+- **[1] Vizualizare Catalog**
+- **[2] Adăugare Produs Nou**
+- **[3] Actualizare Stoc**
+- **[4] Verificare Produse Expirate**
+- **[5] Creare Comandă Nouă**
+- **[6] Căutare Rapidă**
+  - căutare după nume
+  - căutare după substanță activă
+- **[7] Vizualizare Istoric Vânzări**
+- **[8] Ștergere / Dezactivare Produs**
+- **[9] Modificare Preț**
+- **[X] Ieșire**
+
+---
+
+# **💾 Structura Datelor**
+
+## **📦 Informații Stocate pentru Fiecare Medicament**
+
+- **ID Produs**
+- **Denumire Comercială**
+- **Substanță Activă**
+- **Formă Farmaceutică**
+- **Concentrație**
+- **Preț Unitar**
+- **Stoc Disponibil**
+- **Necesită Rețetă**
+- **Data Expirării**
+
+---
+
+## **🧾 Informații Stocate pentru Fiecare Comandă**
+
+- **ID Comandă**
+- **Data și Ora**
+- **Lista Articole**
+  - ID Produs
+  - Cantitatea cumpărată
+  - Preț la momentul vânzării
+- **Date Client**
+  - Nume și prenume
+  - Număr de telefon
+- **Dacă necesită rețetă**
+  - Cod parafă medic
+  - Serie / Număr rețetă
+- **Total Plată**
+- **Metoda de Plată**
+- **Status Plată**
+
+---
+
+# **🏗️ Arhitectură Software & Clase**
+
+Aplicația este construită pe principiul separării responsabilităților.
+
+---
+
+## **1. Clasa MedicamentDB (Produs)**
+
+Reprezintă entitatea de bază a catalogului.
+
+### **Atribute**
+- ID
+- Nume
+- SubstantaActivă
+- FormaFarmaceutică
+- Concentrație
+- Pret
+- Stoc
+- NecesitaReteta
+- DataExpirare
+
+### **Responsabilități**
+- definirea structurii datelor pentru un produs individual
+
+---
+
+## **2. Clasa ArticolComanda (Linie de Vânzare)**
+
+Elementul de legătură dintre un produs și o tranzacție.
+
+### **Atribute**
+- Produs
+- Cantitate
+- PretVanzareMomentan
+
+### **Responsabilități**
+- calculează subtotalul unei linii din comandă
+- păstrează prețul produsului la momentul vânzării
+
+---
+
+## **3. Clasa Comanda (Tranzacție)**
+
 Reprezintă o vânzare finalizată.
-Atribute: ID, DataOra, ListaArticole (colecție de ArticolComanda), TotalPlata, DateClient (Nume, Telefon), DetaliiReteta (Cod Parafă, Serie/Nr.), MetodaPlata.
-Responsabilități: Agregarea articolelor, calculul totalului final și stocarea datelor clientului pentru conformitate legală.
-4. Clasa ManagerMedicamente (Controller/Service)
-Centrul de comandă al aplicației. Gestionează persistența datelor și logica de business.
-Metode Cheie:
-IncarcaMedicamente(): Citește baza de date JSON.
-SalveazaMedicamente(List<MedicamentDB>): Scrie modificările în JSON.
-ActualizeazaStoc(int id, int cantitate): Scade stocul după o vânzare.
-CautaProdus(string keyword): Filtrează lista după nume sau substanță activă.
-VerificaExpirate(int zile): Returnează lista produselor critice.
-💾 Persistența Datelor
-Format: Fișiere JSON (medicamente.json, comenzi_farmacie.json).
-Librărie: Newtonsoft.Json pentru serializare/deserializare rapidă și robustă.
-Avantaj: Portabilitate maximă (nu necesită instalare SQL Server), ușor de backup-uit și editat manual dacă este nevoie.
-🎨 Interfața Utilizator (WPF)
-Interfața este dezvoltată în XAML, oferind o experiență fluidă și modernă:
-DataGrid-uri personalizate: Pentru vizualizarea și editarea tabelelor complexe.
-Validare Input: Controale care previn introducerea de date eronate (ex: cantități negative, prețuri invalide, date expirate).
-Navigare Dinamică: Schimbarea paginilor fără reîncărcarea ferestrei principale, asigurând o curgere naturală a fluxului de lucru.
-🛠️ Tehnologii Utilizate
-Limbaj: C# 12 / .NET 10
-Framework UI: Windows Presentation Foundation (WPF)
-Serializare: Newtonsoft.Json
-IDE: Visual Studio 2026
+
+### **Atribute**
+- ID
+- DataOra
+- ListaArticole
+- TotalPlata
+- DateClient
+- DetaliiReteta
+- MetodaPlata
+
+### **Responsabilități**
+- agregarea articolelor
+- calcularea totalului
+- stocarea informațiilor clientului
+
+---
+
+## **4. Clasa ManagerMedicamente (Controller / Service)**
+
+Centrul de comandă al aplicației.
+
+### **Metode Principale**
+- IncarcaMedicamente()
+- SalveazaMedicamente()
+- ActualizeazaStoc()
+- CautaProdus()
+- VerificaExpirate()
+
+---
+
+# **🧠 Clase și Metode**
+
+## **Clasa Produs**
+- Constructor
+- GetID()
+- SetID()
+- GetDenumire()
+- SetDenumire()
+- GetSubstanta()
+- SetSubstanta()
+- GetForma()
+- SetForma()
+- GetConcentratie()
+- SetConcentratie()
+- GetPret()
+- SetPret()
+- GetStoc()
+- SetStoc()
+- GetReteta()
+- SetReteta()
+- GetDataExpirarii()
+- SetDataExpirarii()
+
+---
+
+## **Clasa ArticolComanda**
+- Constructor
+- GetProdus()
+- SetProdus()
+- GetCantitate()
+- SetCantitate()
+- GetPretTotalArticol()
+
+---
+
+## **Clasa Comanda**
+- Constructor
+- GetID()
+- SetID()
+- GetNumeClient()
+- SetNumeClient()
+- GetProduse()
+- SetProduse()
+- GetPretTotal()
+- GetDataOra()
+- SetDataOra()
+- GetStatusPlata()
+- SetStatusPlata()
+- GetCodParafa()
+- SetCodParafa()
+- AdaugaArticol()
+
+---
+
+## **Clasa Manager**
+- AdaugaProdus()
+- StergeProdus()
+- ModificaPret()
+- ActualizeazaStoc()
+- ObtineMeniu()
+- CautaProdus()
+- CautaRapid()
+- VerificaExpirate()
+- AdaugaComanda()
+- ObtineComenzi()
+- CautaComanda()
+- ModificaComanda()
+- StergeComanda()
+
+---
+
+# **💾 Persistența Datelor**
+
+## **Format**
+- `medicamente.json`
+- `comenzi_farmacie.json`
+
+## **Librărie**
+- `Newtonsoft.Json`
+
+## **Avantaje**
+- portabilitate ridicată
+- fără SQL Server
+- backup rapid
+- editare manuală ușoară
+
+---
+
+# **🎨 Interfața Utilizator (WPF)**
+
+- DataGrid-uri personalizate
+- Validare input
+- Navigare dinamică
+- Interfață modernă și fluidă
+
+---
+
+# **🛠️ Tehnologii Utilizate**
+
+- **Limbaj:** C# 12 / .NET 10
+- **Framework UI:** WPF
+- **Serializare:** Newtonsoft.Json
+- **IDE:** Visual Studio 2026
