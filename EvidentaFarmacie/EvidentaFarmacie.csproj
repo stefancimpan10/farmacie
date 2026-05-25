@@ -3,7 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LibrarieModele\LibrarieModele.csproj" />
     <ProjectReference Include="..\NivelStocareDate\NivelStocareDate.csproj" />
-    <ProjectReference Include="..\NivelUIWPF\NivelUIWPF.csproj" />
+    <ProjectReference Include="..\NivelUIWPF\PharmaSuite Pro.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

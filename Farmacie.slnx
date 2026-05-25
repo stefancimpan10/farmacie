@@ -1,6 +1,9 @@
 <Solution>
+  <Project Path="../../instalare/SetupPharma/SetupPharma.vdproj" Type="Installer">
+    <Build />
+  </Project>
   <Project Path="EvidentaFarmacie/EvidentaFarmacie.csproj" />
   <Project Path="LibrarieModele/LibrarieModele.csproj" />
   <Project Path="NivelStocareDate/NivelStocareDate.csproj" />
-  <Project Path="NivelUIWPF/NivelUIWPF.csproj" />
+  <Project Path="NivelUIWPF/PharmaSuite Pro.csproj" />
 </Solution>

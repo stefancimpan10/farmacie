@@ -29,7 +29,7 @@ namespace NivelUIWPF
             Loaded += (s, e) => ReincarcaProduseReceptie();
             DgListaIntrare.ItemsSource = cosIntrare;
 
-            // Setăm data default la +2 ani de azi (majoritatea medicamentelor au valabilitate 2-3 ani)
+            // Setăm data default la +2 ani
             if (DpExpirare != null)
                 DpExpirare.SelectedDate = DateTime.Now.AddYears(2);
         }
@@ -56,46 +56,66 @@ namespace NivelUIWPF
             }
         }
 
-        // Adaugă produsul în tabelul de jos
+        // --- METODA CARE DA EROARE LA TINE ---
+        // Asigură-te că aceasta este în interiorul clasei PaginaReceptie, dar NU în altă metodă
         private void BtnAdaugaInLista_Click(object sender, RoutedEventArgs e)
         {
+            // 1. Verificare Produs
             if (CmbProduseReceptie.SelectedItem is not MedicamentDB produsSelectat)
             {
-                MessageBox.Show("Selectează un produs valid!", "Eroare");
+                MessageBox.Show("Te rog selectează un produs din listă!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
+            // 2. Validare Cantitate
             if (!int.TryParse(TxtCantitateIntrare.Text, out int cantitate) || cantitate <= 0)
             {
-                MessageBox.Show("Introdu o cantitate validă!", "Eroare");
+                MessageBox.Show("Cantitatea trebuie să fie un număr pozitiv!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                TxtCantitateIntrare.Focus();
                 return;
             }
 
+            // 3. Validare Preț
             if (!decimal.TryParse(TxtPretAchizitie.Text, out decimal pret))
             {
-                MessageBox.Show("Introdu un preț valid!", "Eroare");
+                MessageBox.Show("Preț invalid!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                TxtPretAchizitie.Focus();
                 return;
             }
 
+            if (pret < 0)
+            {
+                MessageBox.Show("Prețul nu poate fi negativ!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // 4. Validare Dată Expirare
+            DateTime dataExp = DpExpirare.SelectedDate ?? DateTime.MinValue;
+            if (dataExp.Date < DateTime.Today)
+            {
+                MessageBox.Show("Data expirării nu poate fi în trecut!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Adăugare în listă
             var linieNoua = new LinieIntrare
             {
                 Nume = produsSelectat.Nume,
                 Cantitate = cantitate,
                 PretAchizitie = pret,
-                DataExpirare = DpExpirare.SelectedDate?.ToString("dd.MM.yyyy") ?? "-"
+                DataExpirare = dataExp.ToString("dd.MM.yyyy")
             };
 
             cosIntrare.Add(linieNoua);
             CalculeazaTotalIntrare();
 
-            // Reset câmpuri pentru următorul produs
+            // Reset
             TxtCantitateIntrare.Text = "1";
             TxtPretAchizitie.Text = "0.00";
             CmbProduseReceptie.Text = "";
             CmbProduseReceptie.Focus();
         }
 
-        // Șterge o linie din tabel
         private void BtnStergeLinie_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn && btn.Tag is LinieIntrare linie)
@@ -105,45 +125,31 @@ namespace NivelUIWPF
             }
         }
 
-        // SALVEAZĂ TOATE PRODUSELE DIN COȘ ÎN BAZA DE DATE
         private void BtnFinalizeazaIntrarea_Click(object sender, RoutedEventArgs e)
         {
-            if (cosIntrare.Count == 0)
-            {
-                MessageBox.Show("Lista de intrare este goală!", "Atenție");
-                return;
-            }
+            if (cosIntrare.Count == 0) return;
 
             try
             {
-                // 1. Încărcăm baza de date actuală
                 var toateProdusele = ManagerMedicamente.IncarcaMedicamente();
 
-                // 2. Iterăm prin coș și actualizăm stocurile
                 foreach (var linie in cosIntrare)
                 {
                     var prodInBD = toateProdusele.FirstOrDefault(p => p.Nume == linie.Nume);
                     if (prodInBD != null)
                     {
-                        prodInBD.Stoc += linie.Cantitate; // Creștem stocul
-                        // Notă: Prețul de vânzare (Pret) rămâne cel din BD. 
-                        // Prețul de achiziție (linie.PretAchizitie) e doar informativ aici dacă nu ai câmp dedicat în BD.
+                        prodInBD.Stoc += linie.Cantitate;
                     }
                 }
 
-                // 3. Salvăm o singură dată tot fișierul
                 ManagerMedicamente.SalveazaMedicamente(toateProdusele);
-
-                MessageBox.Show($"INTRARE REUȘITĂ!\nAu fost adăugate {cosIntrare.Sum(l => l.Cantitate)} produse în stoc.\nValoare totală: {cosIntrare.Sum(l => l.TotalLinie):N2} RON",
-                                "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // 4. Golim coșul
+                MessageBox.Show("Intrare finalizată cu succes!", "Succes");
                 cosIntrare.Clear();
                 CalculeazaTotalIntrare();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Eroare la salvarea în baza de date: {ex.Message}", "Eroare Criticală");
+                MessageBox.Show($"Eroare: {ex.Message}", "Eroare");
             }
         }
 
@@ -151,6 +157,24 @@ namespace NivelUIWPF
         {
             decimal total = cosIntrare.Sum(l => l.TotalLinie);
             TxtTotalIntrare.Text = $"{total:N2} RON";
+        }
+
+        // Metode pentru a bloca tastele invalide (opțional, dar recomandat)
+        private void NumaiCifre_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.Text, 0);
+        }
+
+        private void NumarDecimal_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            bool isDigit = char.IsDigit(e.Text, 0);
+            bool isDot = e.Text == ".";
+            if (!isDigit && !isDot) { e.Handled = true; return; }
+            if (isDot)
+            {
+                var textBox = sender as TextBox;
+                if (textBox != null && textBox.Text.Contains(".")) e.Handled = true;
+            }
         }
     }
 }
